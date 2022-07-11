@@ -1,9 +1,10 @@
 main{
     display: flex;
     margin: 12px 0;
+    align-items: flex-start;
 }
 #news{
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.3);
     flex: 0 0 calc(30% - 60px);
     margin: 0 10px;
     padding: 20px;
@@ -37,7 +38,7 @@ main{
     font-size: 8px;
     padding: 0 6px;
     display: inline-block;
-    transform: scale(1) rotate(-10deg);
+    transform:translate(-3px , -3px) scale(1) rotate(-10deg);
    }
 #news ul time{
     /* flex-wrap: wrap; */
@@ -47,6 +48,28 @@ main{
     /* padding-left: 5px; */
 }
 #ca{
-    background-color: #fcc;
+    /* background-color: #fcc; */
     flex: 7;
+    display: flex;
+    flex-wrap: wrap; /*超出範圍換行*/
+}
+.caItem{
+    background-color: rgba(255, 255, 255, 0.3);
+    flex: 0 0 calc(50% - 40px);
+    margin: 10px;
+    padding: 10px;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+.caItem h2{
+    color: rgb(32, 58, 38);
+    margin: 0 0 3px 0;
+    letter-spacing: 0.2em;
+}
+.caItem p{
+    color:rgb(48, 80, 72);
+    letter-spacing: 0.1em;
+    text-align: justify;
+}
+.caItem img{
+    width: 100%;
 }
