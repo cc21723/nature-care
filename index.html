@@ -50,6 +50,12 @@
                 var pH=$(this).children('p').innerHeight();
                 $(this).children('p').stop().animate({'bottom':-pH},1000,'easeOutBounce');
             })
+            $(window).resize(function(){
+                $('.caItem p').each(function(){
+                    $(this).css({'bottom':-$(this).innerHeight()});
+                });
+            });
+            
         })
     </script>
 </head>
