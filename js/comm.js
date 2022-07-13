@@ -1,10 +1,13 @@
 function mainNavff(){
-    
-    
-    $(window).resize(function(){
+    function setMenu(){
+        
         $('#mainNav>ul>li').off('mouseenter mouseleave');
         $('#mainNav>ul>li>div').off('click');
-        if(window.outerWidth>600){
+    
+        //先把classname為closeBtn德清掉
+        $('#menuBtn').removeClass('closeBtn'); 
+
+        if(!window.matchMedia('(max-width:600px)').matches){
             $('#mainNav').show();
             $('#menuBtn').hide();
             $('#mainNav ul ul').css({
@@ -34,8 +37,19 @@ function mainNavff(){
             })
         }
 
+    }
+    var winWidth =window.outerWidth;
+    alert(winWidth);
+
+    setMenu();
+
+    $(window).resize(function(){
+        if (window.outerWidth!=winWidth) {
+            setMenu();
+        }
+
     })
-    $(window).resize();
+    // $(window).resize();
 
     $('#menuBtn').click(function(){
         $('#mainNav').stop().slideToggle();
