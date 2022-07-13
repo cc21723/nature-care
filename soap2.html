@@ -8,8 +8,10 @@
     <script src="https://kit.fontawesome.com/b5c87f0d2e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/product.css">
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/comm.js"></script>
+    <script src="js/product.js"></script>
     <script>
         
         $(function(){
@@ -18,7 +20,9 @@
                 mainNavff();
                
             });
-
+            $('#proMenu').load('proMenu.html',function(){
+                proMenuEff();
+            });
         })
     </script>
 </head>
@@ -30,7 +34,11 @@
         <img src="images/banner.jpg" alt="banner">
     </div>
     <main>
-            
+        <nav id="proMenu">
+                
+        </nav>
+        <div id="proList">
+        </div>
     </main>
     <footer>
     </footer>

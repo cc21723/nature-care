@@ -9,9 +9,11 @@ function mainNavff(){
 
         if(!window.matchMedia('(max-width:600px)').matches){
             $('#mainNav').show();
-            $('#menuBtn').hide();
+            // $('#menuBtn').hide();
+            $('#menuBtn').css({'top':0,'left':-600});
             $('#mainNav ul ul').css({
-                'position':'relative',
+                // 'position':'relative',
+                'position':'static',
                 'top':200,
                 'left':0
             }).hide()
@@ -33,13 +35,14 @@ function mainNavff(){
                 'opacity':1,
             });
             $('#mainNav>ul>li>div').click(function(){
-                $(this).next().stop().slideToggle();
+                // $(this).next().stop().slideToggle();
+                $(this).next().stop().animate({'left':0});
             })
         }
 
     }
     var winWidth =window.outerWidth;
-    alert(winWidth);
+    // alert(winWidth);
 
     setMenu();
 
