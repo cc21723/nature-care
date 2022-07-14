@@ -32,6 +32,15 @@ main{
     margin: 0 20px;
     padding-bottom: 5px;
 }
+#proMenu ul ul li a.nowPage::before{
+    content: '';
+    border: 7px solid transparent;
+    border-left-color: snow;
+    width: 0;
+    height: 0;
+    display: inline-block;
+    padding-right: 5px;
+}
 #proList{
     /* background-color: #fff; */
     flex: 0 0 calc( 100% - 182px );

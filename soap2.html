@@ -21,7 +21,51 @@
                
             });
             $('#proMenu').load('proMenu.html',function(){
-                proMenuEff();
+                proMenuEff(1,1);
+            });
+            // $.ajax({
+            //     type: "載入方法(get)",
+            //     url: "載入對象",
+            //     dataType: "取得的資料型探",
+            //     success: function () {
+            //         '載入失敗'
+            //     },
+            //     success:function(){
+            //         '載入完成(取得)'
+            //     }
+            // });
+
+            $.ajax({
+                type: "get",
+                url: "json/soap.json",
+                dataType: "json",
+                success: function () {
+                    alert('err');
+                },
+                success:function(jData){ //資料存在jData
+                    // alert('ok');
+                    console.log(jData);
+
+                    //物件,屬性
+                    console.log(jData.product);
+                    // console.log(jData.product.soap);
+                    // console.log(jData.product.soap[0]);
+                    // console.log(jData.product.soap[0].name);
+                    var product=jData.product.soap;
+                    var item=''
+                    for(var i=0;i<product.length;i++){
+                        // $('#proList').append('<h2>'+product[i].name+'</h2>');
+
+                        // item='<div class="proItem"><img src="imgsoap/thum/'+product[i].photo+'"><h3>'+ 
+                        //       product[i].name +'</h3><p>'+product[i].desc+'</p><p>'+product[i].ingre+'</p></div>';
+                        // $('#proList').append(item); 效率不好
+
+                        item+='<div class="proItem"><img src="imgsoap/thum/'+product[i].photo+'"><h3>'+ 
+                              product[i].name +'</h3><p>'+product[i].desc+'</p><p>'+product[i].ingre+'</p></div>';
+                            }
+                            // console.log(item);
+                        $('#proList').html(item);
+                }
             });
         })
     </script>
@@ -35,9 +79,9 @@
     </div>
     <main>
         <nav id="proMenu">
-                
         </nav>
         <div id="proList">
+
         </div>
     </main>
     <footer>
