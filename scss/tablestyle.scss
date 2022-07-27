@@ -1,27 +1,83 @@
 $tableColor:#093b09;
 
-.cap{
+//用%不會產出標準的css
+%cap{
     color: snow;
     font-size: 1.5em;
     margin-bottom: 10px;
 }
 
-.ts1{
-    border: 5px solid $tableColor;
-    width: 95%;
-    margin: 0 auto;
-    caption{
-        @extend .cap;
-
+.eBase{
+    width: 85%;
+    margin: 50px auto;
+}
+//@mixin 控制多個對象
+    
+@mixin tdW {
+    &:nth-of-type(1){
+        width: 120px;
+        text-align: center;
     }
+    &:nth-of-type(3){
+        width: 70px;
+        text-align: center;
+    }
+    &:nth-of-type(4){
+        width: 50px;
+        text-align: right;
+    }
+    &:nth-of-type(6){
+        width: 120px;
+        text-align: right;
+       }
+
+}
+@mixin zTable($fontColor, $bgColor,$alpha) {
     tr{
         &:nth-of-type(odd){
-            background-color: rgba($tableColor, 0.5);
+            td{      
+                    background-color: rgba($tableColor,$alpha*0.65);
+            }
         }
         &:nth-of-type(even){
-            background-color: rgba($tableColor, 0.3);
+            td{
+                background-color: rgba($tableColor, $alpha);
+            }
+        }
+        &:hover{
+            td{
+                color: $fontColor;
+                @if $alpha*2>0.8{
+                    //變數用':'不是用'='
+                    $alpha:0.8;
+                }@else{
+                    $alpha:$alpha*2;
+                }
+
+                background-color: rgba($bgColor, $alpha*2);
+            }
         }
     }
+}
+
+.ts1{
+    border: 5px solid $tableColor;
+    @extend .eBase;
+    // width: 95%;
+    // margin: 0 auto;
+    caption{
+        @extend %cap;
+
+    }
+    @include zTable(#fff, $tableColor, 0.5);
+    // tr{
+    //     &:nth-of-type(odd){
+    //         background-color: rgba($tableColor, 0.5);
+    //     }
+    //     &:nth-of-type(even){
+    //         background-color: rgba($tableColor, 0.3);
+    //     }
+    // }
     th{
         border: 1px solid $tableColor;
         background: $tableColor;
@@ -31,34 +87,36 @@ $tableColor:#093b09;
     td{
         border: 1px dashed $tableColor;
         padding: 5px;
-        color: snow;
+        // color: snow;
         font-weight: normal;
+        @include tdW;
 
-       &:nth-of-type(1){
-        width: 120px;
-        text-align: center;
-       }
-       &:nth-of-type(3){
-        width: 70px;
-        text-align: center;
-       }
-       &:nth-of-type(4){
-        width: 50px;
-        text-align: right;
-       }
-       &:nth-of-type(6){
-        width: 120px;
-        text-align: right;
-       }
+    //    &:nth-of-type(1){
+    //     width: 120px;
+    //     text-align: center;
+    //    }
+    //    &:nth-of-type(3){
+    //     width: 70px;
+    //     text-align: center;
+    //    }
+    //    &:nth-of-type(4){
+    //     width: 50px;
+    //     text-align: right;
+    //    }
+    //    &:nth-of-type(6){
+    //     width: 120px;
+    //     text-align: right;
+    //    }
     }
 }
 .ts2{
-    width: 95%;
-    margin: 30px auto;
+    @extend .eBase;
+    // width: 95%;
+    // margin: 30px auto;
     border-collapse: separate;
     border-spacing: 3px;
     caption{
-        @extend .cap;
+        @extend %cap;
     }
     tr{
         &:nth-of-type(-n+4){
@@ -81,5 +139,6 @@ $tableColor:#093b09;
     }
     td{
         padding: 5px;
+        @include tdW;
     }
 }
